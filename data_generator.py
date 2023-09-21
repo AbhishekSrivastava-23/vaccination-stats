@@ -21,8 +21,8 @@ vaccine_manufacturer = [["Pfizer", "Mainz, Germany"], ["Moderna", "Massachusetts
 
 with open("data_entry.tql", 'w') as f:
 
-    for vaccine in vaccine_manufacturer:
-        f.write(f'insert\n\t$v isa manufacturer,\n\thas vaccine_name "{vaccine[0]}",\n\thas factory_location "{vaccine[1]}";\n\n')
+    for manufacturer in vaccine_manufacturer:
+        f.write(f'insert\n\t$v isa manufacturer,\n\thas vaccine_name "{manufacturer[0]}",\n\thas factory_location "{manufacturer[1]}";\n\n')
 
     for name in names:
         country = random.choice(countries)
