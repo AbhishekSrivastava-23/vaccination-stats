@@ -5,9 +5,9 @@
 # GET COUNTRY-WISE VACCINATIONS
 
 match
-    $p isa person, has country $c;
+    $p isa person, has certificate_no $no, has country $c;
 get 
-    $p, $c;
+    $p, $no, $c;
 group $c; 
 count;
 
