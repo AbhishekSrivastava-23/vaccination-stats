@@ -17,20 +17,17 @@ for first_name in first_names:
 
 countries = ["Switzerland", "Canada", "Sweden", "Australia", "United States", "Japan", "Germany", "New Zealand"]
 
-vaccines = [["Pfizer", "Mainz, Germany"], ["Moderna", "Massachusetts, U.S."], ["Novavax", "Maryland, U.S."]]
+vaccine_manufacturer = [["Pfizer", "Mainz, Germany"], ["Moderna", "Massachusetts, U.S."], ["Novavax", "Maryland, U.S."]]
 
 with open("data_entry.tql", 'w') as f:
 
-    for curr_vaccine in vaccines:
-        query = f'insert\n\t$v isa manufacturer,\n\thas vaccine_name "{curr_vaccine[0]}",\n\thas factory_location "{curr_vaccine[1]}";\n\n'
-        f.write(query)
+    for vaccine in vaccine_manufacturer:
+        f.write(f'insert\n\t$v isa manufacturer,\n\thas vaccine_name "{vaccine[0]}",\n\thas factory_location "{vaccine[1]}";\n\n')
 
     for name in names:
         country = random.choice(countries)
         age = str(random.randint(18, 60))
         certificate = str(random.randint(10, 99)) + chr(random.randint(65, 90)) + str(random.randint(1000, 9999)) + chr(random.randint(65, 90))
-        vaccine = random.choice(vaccines)[0]
-        addname = f'\ninsert\n\t$p isa person,\n\thas person_name "{name}",\n\thas country "{country}",\n\thas age {age},\n\thas certificate_no "{certificate}";\n'
-        f.write(addname)
-        addvac = f'\nmatch\n\t$p isa person, has person_name "{name}";\n\t$v isa manufacturer, has vaccine_name "{vaccine}";\ninsert\n\t$iv (person: $p, manufacturer: $v) isa vaccinator;\n\n'
-        f.write(addvac)
+        vaccine = random.choice(vaccine_manufacturer)[0]
+        f.write(f'\ninsert\n\t$p isa person,\n\thas person_name "{name}",\n\thas country "{country}",\n\thas age {age},\n\thas certificate_no "{certificate}";\n')
+        f.write(f'\nmatch\n\t$p isa person, has person_name "{name}";\n\t$v isa manufacturer, has vaccine_name "{vaccine}";\ninsert\n\t$iv (person: $p, manufacturer: $v) isa vaccinator;\n\n')
