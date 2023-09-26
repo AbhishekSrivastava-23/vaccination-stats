@@ -1,0 +1,40 @@
+define
+
+# entities
+
+person sub entity,
+    owns person_name, 
+    owns country,
+    owns age,
+    plays vaccinator:person,
+    owns certificate_no;
+
+manufacturer sub entity,
+    owns vaccine_name,
+    owns factory_location, 
+    plays vaccinator:manufacturer;
+    
+# relation
+vaccinator sub relation,
+    relates person,
+    relates manufacturer;
+
+# attributes
+
+person_name sub attribute,
+    value string;
+
+country sub attribute,
+    value string;
+    
+age sub attribute,
+    value long;
+
+certificate_no sub attribute,
+    value string;
+
+vaccine_name sub attribute,
+    value string;
+
+factory_location sub attribute,
+    value string;
