@@ -1,4 +1,4 @@
-# VACCINATION STATS ONBOARDING_PROJECT
+# VACCINATION STATS ONBOARDING PROJECT
 **Onboarding project to illustrate the connectivity of TypeQL and Python**
 ## HOW TO USE
 #### Make sure that you have TypeDB Server installed. (Find instructions [here](https://typedb.com/docs/typedb/2.x/installation)).
